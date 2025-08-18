@@ -78,16 +78,18 @@ tbl_summary(
 		sleep_wknd ~ "Weekend Hours of Sleep"
 	),
 	missing_text = "Missing",
-	statistic = list(c(sleep_wkdy, sleep_wknd) ~ "{mean} ({min}, {max})",
-									 income = "{p10}, {p90}"),
-	digits = c(starts_with("sleep") ~ 1, income ~ 3)
-) %>%
+	statistic = list(starts_with("sleep") ~ "min = {min}; max = {max}",
+									 income = "{p10} to {p90}"),
+	digits = list(starts_with("sleep") ~ c(1, 1),
+								income ~ c(3, 3)
+)) %>%
 	bold_labels() %>%
 	add_p(test = list(
 		all_continuous() ~ "t.test",
 		all_categorical() ~ "chisq.test"
 	)) %>%
 	add_overall(col_label = "**Total** N = {N}")
+
 
 # Add a footnote to the race/ethnicity variable with a link to the page describing how NLSY classified participants, bolding p-value label
 
@@ -107,10 +109,11 @@ tbl_summary(
 		sleep_wknd ~ "Weekend Hours of Sleep"
 	),
 	missing_text = "Missing",
-	statistic = list(c(sleep_wkdy, sleep_wknd) ~ "{mean} ({min}, {max})",
-									 income = "{p10}, {p90}"),
-	digits = c(starts_with("sleep") ~ 1, income ~ 3)
-) %>%
+	statistic = list(starts_with("sleep") ~ "min = {min}; max = {max}",
+									 income = "{p10} to {p90}"),
+	digits = list(starts_with("sleep") ~ c(1, 1),
+								income ~ c(3, 3)
+	)) %>%
 	bold_labels() %>%
 	add_p(test = list(
 		all_continuous() ~ "t.test",
