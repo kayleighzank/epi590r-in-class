@@ -25,8 +25,30 @@ You can add options to executable code like this
 
 The `echo: false` option disables the printing of code (only output is displayed).
 
+`eval: false` - don't evaluate (run) that chunk
+
+`error: true` - render this even if the chunk causes an error
+
+`cache: true` - store the results of this chunk so that it doesn't need to re-run every time
+
+`warning: false` - don't print warnings
+
+`message: false` - don't print messages
+
+#\| = option for just this chunk
+
+use YAML (top section of document) to select an option the entire document, YAML is VERY picky about it's format
+
+-   can change theme of the document in the YAML also
+
 ```{r}
 x <- 9
 x
 x + 19
+```
+
+```{r}
+library(flextable)
+t <- mtcars
+as_flextable(t)
 ```
