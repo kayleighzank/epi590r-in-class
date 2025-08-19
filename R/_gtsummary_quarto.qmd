@@ -52,12 +52,84 @@ tbl_summary(
   missing_text = "Missing")
 ```
 
+2.2 Part 2 and 2.3 Exercises
+
+@tbl-one shows the descriptive statistics of selected characteristics by sex.
+
 ```{r}
+#| label: tbl-one
+#| tbl-cap: "Cohort Characteristics Stratified by Sex"
 tbl_summary(
   nlsy,
   by = sex_cat,
-  include = c(sex_cat, race_eth_cat, region_cat, 
-  						eyesight_cat, glasses, age_bir))
+  include = c(race_eth_cat, region_cat, 
+  						eyesight_cat, glasses, age_bir),
+  label = list(
+    race_eth_cat ~ "Race/ethnicity",
+    region_cat ~ "Region",
+    eyesight_cat ~ "Eyesight",
+    glasses ~ "Wears glasses",
+    age_bir ~ "Age at first birth"
+  ),
+  missing_text = "Missing")
 
 
+```
+
+```{r}
+#| echo: true
+mean_sleep_wknd <- mean(nlsy$sleep_wknd, na.rm = TRUE)
+mean_sleep_wknd
+```
+
+The mean number of hours of sleep on weekends among the cohort was `r round(mean_sleep_wknd, 2)` .
+
+The mean number of hours of sleep on weekends among the cohort was `r mean(nlsy$sleep_wknd, na.rm = TRUE)` .
+
+```{r}
+#| echo: true
+median_sleep_wknd <- median(nlsy$sleep_wknd, na.rm = TRUE)
+median_sleep_wknd
+```
+
+The median number of hours of sleep on weekends among the cohort was `r median_sleep_wknd` .
+
+The median number of hours of sleep on weekends among the cohort was `r median(nlsy$sleep_wknd, na.rm = TRUE)` .
+
+2.3 Part 2
+
+```{r}
+#| label: tabl-descr
+#| table-cap: "Descriptive Statistics"
+table1 <- tbl_summary(
+	nlsy, 
+	by = sex_cat,
+	include = c(race_eth_cat, region_cat, eyesight_cat, glasses, age_bir),
+	label = list(
+    race_eth_cat ~ "Race/ethnicity",
+    region_cat ~ "Region",
+    eyesight_cat ~ "Eyesight",
+    glasses ~ "Wears glasses",
+    age_bir ~ "Age at first birth")
+) %>%
+	add_overall(last = TRUE)
+
+table1
+
+inline_text(table1, variable = "age_bir", column = "stat_1")
+```
+
+```{r}
+table_part_7 <- tbl_summary(
+	nlsy, 
+	include = sleep_wknd,
+	label = 
+		sleep_wknd ~ "Hours of Sleep on Weekend",
+	missing_text = "Missing",
+	statistic = sleep_wknd ~ "{median}"
+)
+
+table_part_7
+
+inline_text(table_part_7, variable = sleep_wknd, column = "stat_0")
 ```
