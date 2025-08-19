@@ -179,9 +179,7 @@ sd(x)
 standard_dev2 <- function(x, na.rm = TRUE) {
 	if (na.rm == TRUE) {
 		x <- na.omit(x)
-	} else {
-	x
-	}
+	} 
 	num <- sum((x - mean(x))^2)
 	denom <- length(x) - 1
 	sd <- sqrt(num/denom)
