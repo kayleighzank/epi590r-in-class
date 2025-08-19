@@ -116,8 +116,14 @@ table1 <- tbl_summary(
 
 table1
 
-inline_text(table1, variable = "age_bir", column = "stat_1")
+male_birth_miqr <- inline_text(table1, variable = "age_bir", column = "stat_1")
+
+ss_glasses <- inline_text(table1, variable = "glasses", column = "stat_0", pattern = "{n}/{N} ({p}%)")
 ```
+
+Male participants had a median age at birth of their first child of `r male_birth_miqr`.
+
+The proportion of people who wear glasses is `r ss_glasses`.
 
 ```{r}
 table_part_7 <- tbl_summary(
@@ -131,5 +137,7 @@ table_part_7 <- tbl_summary(
 
 table_part_7
 
-inline_text(table_part_7, variable = sleep_wknd, column = "stat_0")
+median_sleep_weekend <- inline_text(table_part_7, variable = sleep_wknd, column = "stat_0")
 ```
+
+The median hours of sleep on weekends of the cohort was `r median_sleep_weekend`.
