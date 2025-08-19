@@ -7,6 +7,8 @@ execute:
   echo: false
 ---
 
+The NLS, sponsored by the U.S. Bureau of Labor Statistics, are nationally representative surveys that follow the same sample of individuals from specific birth cohorts over time. The surveys collect data on labor market activity, schooling, fertility, program participation, health, and much more.
+
 ```{r}
 #| message: false
 library(tidyverse)
@@ -48,4 +50,14 @@ tbl_summary(
     age_bir ~ "Age at first birth"
   ),
   missing_text = "Missing")
+```
+
+```{r}
+tbl_summary(
+  nlsy,
+  by = sex_cat,
+  include = c(sex_cat, race_eth_cat, region_cat, 
+  						eyesight_cat, glasses, age_bir))
+
+
 ```
