@@ -147,13 +147,13 @@ prop(c(1, 0, 1, 0, 1), percentage = FALSE)
 
 b <- c(2343, 2453, 2346, 1243)
 
-num <- sum((b[1:length(b)] - mean(b))^2)
+num <- sum((b - mean(b))^2)
 denom <- length(b) - 1
 sqrt(num/denom)
 sd(b)
 
 standard_dev <- function(x) {
-	num <- sum((x[1:length(x)] - mean(x))^2)
+	num <- sum((x - mean(x))^2)
 denom <- length(x) - 1
 sd <- sqrt(num/denom)
 if (length(x) <= 1) {
@@ -182,7 +182,7 @@ standard_dev2 <- function(x, na.rm = TRUE) {
 } else{
 	x
 }
-	num <- sum((x[1:length(x)] - mean(x))^2)
+	num <- sum((x - mean(x))^2)
 	denom <- length(x) - 1
 	sd <- sqrt(num/denom)
 return(sd)

@@ -306,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2343</span>, <span class="dv">2453</span>, <span class="dv">2346</span>, <span class="dv">1243</span>)</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>num <span class="ot">&lt;-</span> <span class="fu">sum</span>((b[<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(b)] <span class="sc">-</span> <span class="fu">mean</span>(b))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>num <span class="ot">&lt;-</span> <span class="fu">sum</span>((b <span class="sc">-</span> <span class="fu">mean</span>(b))<span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>denom <span class="ot">&lt;-</span> <span class="fu">length</span>(b) <span class="sc">-</span> <span class="dv">1</span></span>
 <span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(num<span class="sc">/</span>denom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -317,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 571.1295</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>standard_dev <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    num <span class="ot">&lt;-</span> <span class="fu">sum</span>((x[<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)] <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    num <span class="ot">&lt;-</span> <span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>denom <span class="ot">&lt;-</span> <span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span></span>
 <span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>sd <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(num<span class="sc">/</span>denom)</span>
 <span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">&lt;=</span> <span class="dv">1</span>) {</span>
@@ -357,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span>{</span>
 <span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>    x</span>
 <span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>    num <span class="ot">&lt;-</span> <span class="fu">sum</span>((x[<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)] <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>    num <span class="ot">&lt;-</span> <span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>    denom <span class="ot">&lt;-</span> <span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span></span>
 <span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>    sd <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(num<span class="sc">/</span>denom)</span>
 <span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(sd)</span>
