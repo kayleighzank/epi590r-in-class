@@ -156,7 +156,7 @@ standard_dev <- function(x) {
 	num <- sum((x - mean(x))^2)
 denom <- length(x) - 1
 sd <- sqrt(num/denom)
-if (length(x) <= 1) {
+if (denom <= 1) {
 	result <- NA
 } else{
 	result <- sd
@@ -185,7 +185,12 @@ standard_dev2 <- function(x, na.rm = TRUE) {
 	num <- sum((x - mean(x))^2)
 	denom <- length(x) - 1
 	sd <- sqrt(num/denom)
-return(sd)
+	if (denom <= 1) {
+	result <- NA
+} else{
+	result <- sd
+}
+return(result)
 }
 
 c <- c(a, NA)
@@ -195,6 +200,7 @@ standard_dev2(c)
 sd(c, na.rm = TRUE)
 standard_dev2(c, na.rm = FALSE)
 sd(c)
+standard_dev2(x)
 
 ```
 
