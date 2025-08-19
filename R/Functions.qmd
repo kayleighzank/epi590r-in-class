@@ -122,6 +122,25 @@ raise(x = 5, power = 3)
 
 ## 2.6 Exercises
 
+```{r}
+prop(c(1, 0, 1, 0, 1))
+
+prop <- function(x, percentage = FALSE) {
+	n <- length(x)
+	mean_val <- sum(x) / n
+	if (percentage) {
+		mean_val <- mean_val * 100
+	} else {
+		mean_val <- mean_val
+	}
+	return(mean_val)
+}
+
+prop(c(1, 0, 1, 0, 1))
+prop(c(1, 0, 1, 0, 1), percentage = TRUE)
+prop(c(1, 0, 1, 0, 1), percentage = FALSE)
+```
+
 1.  Create a function that takes a vector of numbers and returns the standard deviation manually (like we did the mean). Use `if` statements to check if the vector has only one (or fewer) elements and return `NA` if so. (Hint: the `length()` function will be helpful!) You don’t need any extra arguments besides the vector of numbers.
 
 ```{r}
@@ -181,6 +200,30 @@ sd(c)
 
 3.  What is the standard deviation of income in (all of) NLSY? Compare with the built-in R function `sd()`.
 
-```{r}
+```{r, load nlsy}
+
+library(tidyverse)
+library(gtsummary)
+nlsy_cols <- c("glasses", "eyesight", "sleep_wkdy", "sleep_wknd", 
+               "id", "nsibs", "samp", "race_eth", "sex", "region", 
+               "income", "res_1980", "res_2002", "age_bir")
+nlsy <- read_csv(here::here("data", "raw", "nlsy.csv"), 
+                 na = c("-1", "-2", "-3", "-4", "-5", "-998"),
+                 skip = 1, col_names = nlsy_cols) |> 
+  mutate(region_cat = factor(region, labels = c("Northeast", "North Central", "South", "West")),
+         sex_cat = factor(sex, labels = c("Male", "Female")),
+         race_eth_cat = factor(race_eth, labels = c("Hispanic", "Black", "Non-Black, Non-Hispanic")),
+         eyesight_cat = factor(eyesight, labels = c("Excellent", "Very good", "Good", "Fair", "Poor")),
+         glasses_cat = factor(glasses, labels = c("No", "Yes"))) 
+
 
 ```
+
+```{r}
+standard_dev(nlsy$income)
+sd(nlsy$income, na.rm = TRUE)
+
+answer <- standard_dev(nlsy$income)
+```
+
+The standard deviation of income in (all of) NLSY is \$`r answer`
