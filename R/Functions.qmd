@@ -1,5 +1,5 @@
 ---
-title: "2.4 Functions"
+title: "Functions"
 format: html
 editor: visual
 ---
