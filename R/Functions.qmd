@@ -220,10 +220,10 @@ nlsy <- read_csv(here::here("data", "raw", "nlsy.csv"),
 ```
 
 ```{r}
-standard_dev(nlsy$income)
+standard_dev2(nlsy$income)
 sd(nlsy$income, na.rm = TRUE)
 
-answer <- standard_dev(nlsy$income)
+answer <- standard_dev2(nlsy$income)
 ```
 
-The standard deviation of income in (all of) NLSY is \$`r answer`
+The standard deviation of income in (all of) NLSY is \$`r format(answer, scientific = FALSE, big.mark = ",")`
