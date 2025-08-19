@@ -179,7 +179,7 @@ sd(x)
 standard_dev2 <- function(x, na.rm = TRUE) {
 	if (na.rm == TRUE) {
 	x <- na.omit(x)
-} else{
+} else {
 	x
 }
 	num <- sum((x - mean(x))^2)
@@ -201,7 +201,7 @@ sd(c)
 3.  What is the standard deviation of income in (all of) NLSY? Compare with the built-in R function `sd()`.
 
 ```{r, load nlsy}
-
+#| message: false
 library(tidyverse)
 library(gtsummary)
 nlsy_cols <- c("glasses", "eyesight", "sleep_wkdy", "sleep_wknd", 
