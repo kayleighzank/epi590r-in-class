@@ -126,18 +126,22 @@ Male participants had a median age at birth of their first child of `r male_birt
 The proportion of people who wear glasses is `r ss_glasses`.
 
 ```{r}
+#| label: tabl-part7
+#| table-cap: "2.3 Exercises Part 7"
 table_part_7 <- tbl_summary(
 	nlsy, 
+	by = sex_cat,
 	include = sleep_wknd,
 	label = 
 		sleep_wknd ~ "Hours of Sleep on Weekend",
 	missing_text = "Missing",
 	statistic = sleep_wknd ~ "{median}"
-)
+) %>%
+	add_overall()
 
 table_part_7
 
-median_sleep_weekend <- inline_text(table_part_7, variable = sleep_wknd, column = "stat_0")
+overall_median_sleep_weekend <- inline_text(table_part_7, variable = sleep_wknd, column = "stat_0")
 ```
 
-The median hours of sleep on weekends of the cohort was `r median_sleep_weekend`.
+The median hours of sleep on weekends of the cohort was `r overall_median_sleep_weekend`.
